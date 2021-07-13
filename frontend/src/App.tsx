@@ -1,3 +1,4 @@
+import DonutChart from "components/DonutChart";
 import ImgDsDark from "./assets/img/ds-dark.svg";
 
 function App() {
@@ -7,7 +8,7 @@ function App() {
         <img src={ImgDsDark} alt="DevSuperior" height="40" />
         <h1>Spring & React</h1>
         <h2>Estudo de caso busca agrupada</h2>
-        <h1>Gráfico aqui</h1>
+        <DonutChart />
       </div>
     </div>
   );
