@@ -96,6 +96,21 @@ public interface SaleRepository extends JpaRepository<Sale, Long> {
 
 ### Passo 6: criar Service e Controller
 ```java
+@Service
+public class SaleService {
+
+	@Autowired
+	private SaleRepository repository;
+	
+	@Transactional(readOnly = true)
+	public List<SalesByStoreDTO> salesByStore() {
+		return repository.salesByStore();
+	}
+}
+``` 
+
+
+```java
 @RestController
 @RequestMapping(value = "/sales")
 public class SaleController {
@@ -117,15 +132,14 @@ public class SaleController {
 ## Checklist front end
 
 ### Passo 1: adicionar bibliotecas
-
+```
 yarn add axios
 
 yarn add apexcharts react-apexcharts
+```
 
 
 ### Passo 2: adicionar componente de gráfico
-
-- DonutChart
 ```ts
 import Chart from 'react-apexcharts';
 
@@ -163,6 +177,10 @@ export default DonutChart;
 ### Passo 3: adicionar estado com useState e useEffect
 
 ### Passo 4: BASE_URL e tipo SaleByStore
+```ts
+export const BASE_URL = "http://localhost:8080"
+```
+
 ```ts
 export type SaleByStore = {
     sum : number;
